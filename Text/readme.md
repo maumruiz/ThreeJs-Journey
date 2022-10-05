@@ -1,4 +1,4 @@
-# Three.js Journey
+# 3D text
 
 ![image](./text-threejs.jpg)
 

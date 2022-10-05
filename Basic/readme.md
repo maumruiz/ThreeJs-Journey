@@ -1,5 +1,10 @@
-# Three.js Journey
+# Basic Functionality
 
+![image](./basic-threejs.jpg)
+
+## Preview Link:
+
+https://basic-threejs.netlify.app
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
