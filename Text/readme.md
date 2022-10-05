@@ -1,5 +1,11 @@
 # Three.js Journey
 
+![image](./text-threejs.jpg)
+
+## Preview Link:
+
+https://threejs-text.netlify.app
+
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
