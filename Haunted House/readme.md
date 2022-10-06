@@ -1,5 +1,10 @@
-# Three.js Journey
+# Lights and Shadows - Haunted House
 
+![image](./haunted_house.jpg)
+
+## Preview Link:
+
+https://maumruiz-haunted-house.netlify.app
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
