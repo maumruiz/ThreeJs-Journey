@@ -1,5 +1,10 @@
-# Three.js Journey
+# Particles - Galaxy
 
+![image](./galaxy.jpg)
+
+## Preview Link:
+
+https://maumruiz-galaxy.netlify.app
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
