@@ -1,4 +1,10 @@
-# Three.js Journey
+# Scroll Animation - Landpage
+
+![image](./scroll.jpg)
+
+## Preview Link:
+
+https://maumruiz-scroll.netlify.app
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
