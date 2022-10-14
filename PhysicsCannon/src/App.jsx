@@ -158,8 +158,7 @@ function World() {
   const [spheres, setSpheres] = useState([uuidv4()])
   const [cubes, setCubes] = useState([uuidv4()])
   const [popcorns, setPopcorns] = useState([uuidv4()])
-
-  let deltaFrames = 0
+  const [deltaFrames, setDelta] = useState(0)
 
   const { flood, popCorns } = useControls({
     flood: false,
@@ -177,11 +176,12 @@ function World() {
       setSpheres((currSpheres) => [])
       setCubes((currCubes) => [])
       setPopcorns((currCubes) => [])
+      setDelta(0)
     })
   })
 
   useFrame(({ clock }) => {
-    deltaFrames += 1
+    setDelta(deltaFrames + 1)
     if (flood && deltaFrames % 10 === 0) {
       if (Math.random() < 0.5) {
         setSpheres((currSpheres) => [...currSpheres, uuidv4()])
@@ -190,7 +190,7 @@ function World() {
         setCubes((currCubes) => [...currCubes, uuidv4()])
       }
     }
-
+    
     if (popCorns && deltaFrames % 8 === 0) {
       setPopcorns((currPopcorns) => [...currPopcorns, uuidv4()])
     }
