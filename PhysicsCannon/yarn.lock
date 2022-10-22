@@ -583,6 +583,14 @@
     cannon-es "^0.20.0"
     cannon-es-debugger "^1.0.0"
 
+"@react-three/csg@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@react-three/csg/-/csg-1.1.5.tgz#9725973b9a6b39e8e2a685f8a200928798d1abc2"
+  integrity sha512-b/xejsRHPjwDtd44X8VtoLkXC+Vc/PRt/SqA5dSYocn3efFZkk0CZCubDhAzR0rj+Ydbqr3AXVPWPo6YLqRIHw==
+  dependencies:
+    react-merge-refs "^1.1.0"
+    three-bvh-csg "^0.0.2"
+
 "@react-three/drei@^9.34.4":
   version "9.34.4"
   resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.34.4.tgz#df74eb60925fda901dc478759e56653dda64eab6"
@@ -1420,6 +1428,11 @@ suspend-react@^0.0.8:
   resolved "https://registry.yarnpkg.com/suspend-react/-/suspend-react-0.0.8.tgz#b0740c1386b4eb652f17affe4339915ee268bd31"
   integrity sha512-ZC3r8Hu1y0dIThzsGw0RLZplnX9yXwfItcvaIzJc2VQVi8TGyGDlu92syMB5ulybfvGLHAI5Ghzlk23UBPF8xg==
 
+three-bvh-csg@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/three-bvh-csg/-/three-bvh-csg-0.0.2.tgz#1e7c9d68bf02e37d3a520f6d9ada5b8d9771ccfa"
+  integrity sha512-5T1BP1iRjvrG0YIt6G5GwQNgTGHKHrDfRajG10qIVrfjk2QXcwu6rfmSOm+TW7IZQbTcpiBp1/wePyiaYmdlIw==
+
 three-mesh-bvh@^0.5.15:
   version "0.5.16"
   resolved "https://registry.yarnpkg.com/three-mesh-bvh/-/three-mesh-bvh-0.5.16.tgz#ed8518355fb70d7da6a5537558ba43f76a56b067"
@@ -1429,6 +1442,23 @@ three-stdlib@^2.17.1:
   version "2.17.2"
   resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.17.2.tgz#9c2a2914a16123853531612dac8870e6e242685b"
   integrity sha512-7ZLCJJogtn1D1MlUi7q0iLUbrxj7K++YxjHIIz5AZ4wX4E137BgiiTmhH4XhAuvXGRk9ph3ZtoHTfJBXhqDX3w==
+  dependencies:
+    "@babel/runtime" "^7.16.7"
+    "@types/offscreencanvas" "^2019.6.4"
+    "@webgpu/glslang" "^0.0.15"
+    chevrotain "^10.1.2"
+    draco3d "^1.4.1"
+    fflate "^0.6.9"
+    ktx-parse "^0.4.5"
+    mmd-parser "^1.0.4"
+    opentype.js "^1.3.3"
+    potpack "^1.0.1"
+    zstddec "^0.0.2"
+
+three-stdlib@^2.17.3:
+  version "2.17.3"
+  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.17.3.tgz#f92d322810d81379a51344b21e0a2e941b84cb8f"
+  integrity sha512-k2VwPXi75ySy0fxPIeUk3mLkj3/j+sCFK4g9Kp5J7w0PUh6qrCdhah7L6+On6fW5mBdVtML4Q5yEyN1R0Cfvqw==
   dependencies:
     "@babel/runtime" "^7.16.7"
     "@types/offscreencanvas" "^2019.6.4"

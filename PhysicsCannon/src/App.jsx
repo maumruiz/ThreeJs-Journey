@@ -3,11 +3,13 @@ import { DirectionalLightHelper, CameraHelper } from 'three'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, useHelper } from '@react-three/drei'
 import { useSpring, animated, config } from "@react-spring/three"
-import { Physics, usePlane, useBox, useSphere, useContactMaterial } from '@react-three/cannon'
+import { Physics, usePlane, useBox, useSphere, useContactMaterial, Debug } from '@react-three/cannon'
 import { useControls, button, Leva } from 'leva'
 import { v4 as uuidv4 } from 'uuid';
 import './App.css'
 import { useEffect } from 'react'
+import { PopcornModel } from './Popcorn'
+import { PopcornSmoothModel } from './PopcornSmooth'
 
 const groundMaterial = 'ground'
 const boxMaterial = 'box'
@@ -43,11 +45,11 @@ function Box(props) {
 }
 
 function Plane(props) {
-  const [ref] = usePlane(() => ({ material: groundMaterial, rotation: [-Math.PI / 2, 0, 0], ...props }))
+  const [ref] = usePlane(() => ({ type: 'Static', args: [6, 6], ...props }))
   return (
     <mesh receiveShadow ref={ref}>
-      <planeGeometry args={[1000, 1000]} />
-      <meshStandardMaterial color="#f0f0f0" />
+      <planeGeometry args={[6, 6]} />
+      <meshStandardMaterial color="teal" />
     </mesh>
   )
 }
@@ -58,6 +60,7 @@ function Cube(props) {
   const zPos = (Math.random() - 0.5) * 3
 
   const [ref, api] = useBox(() => ({
+    args: [1, 1, 1],
     position: [xPos, yPos, zPos],
     material: boxMaterial,
     mass: 1,
@@ -104,38 +107,39 @@ function Sphere(props) {
   )
 }
 
-function Popcorn(props) {
-  const xPos = (Math.random() - 0.5) * 3
-  const yPos = 5
-  const zPos = (Math.random() - 0.5) * 3
+// function Popcorn(props) {
+//   const xPos = (Math.random() - 0.5) * 3
+//   const yPos = 5
+//   const zPos = (Math.random() - 0.5) * 3
 
-  const [ref, api] = useSphere(() => ({
-    args: [0.4],
-    position: [xPos, yPos, zPos],
-    material: popcornMaterial,
-    mass: 1,
-    ...props
-  }))
+//   const [ref, api] = useBox(() => ({
+//     args: [1, 1, 1],
+//     position: [xPos, yPos, zPos],
+//     material: popcornMaterial,
+//     mass: 1,
+//     ...props
+//   }))
 
-  useContactMaterial(popcornMaterial, groundMaterial, {
-    friction: 0.9,
-    restitution: 0.3,
-  })
+//   useContactMaterial(popcornMaterial, groundMaterial, {
+//     friction: 0.9,
+//     restitution: 0.3,
+//   })
 
-  useEffect(() => {
-    const randX = (Math.random() - 0.5) * 4
-    const randY = Math.random() * 5 + 8
-    const randZ = (Math.random() - 0.5) * 4
-    api.applyImpulse([randX, randY, randZ], [0,0,0])
-  }, [])
+//   useEffect(() => {
+//     const randX = (Math.random() - 0.5) * 4
+//     const randY = Math.random() * 5 + 8
+//     const randZ = (Math.random() - 0.5) * 4
+//     api.applyImpulse([randX, randY, randZ], [0.1, 0.1, 0.05])
+//   }, [])
 
-  return (
-    <mesh castShadow ref={ref}>
-      <sphereGeometry args={[0.4]} />
-      <meshStandardMaterial color="beige" />
-    </mesh>
-  )
-}
+//   return (
+//     // <mesh castShadow ref={ref}>
+//     //   <sphereGeometry args={[0.4]} />
+//     //   <meshStandardMaterial color="beige" />
+//     // </mesh>
+//     <Popcorn></Popcorn>
+//   )
+// }
 
 function Lights() {
   const light = useRef()
@@ -190,7 +194,7 @@ function World() {
         setCubes((currCubes) => [...currCubes, uuidv4()])
       }
     }
-    
+
     if (popCorns && deltaFrames % 8 === 0) {
       setPopcorns((currPopcorns) => [...currPopcorns, uuidv4()])
     }
@@ -199,13 +203,16 @@ function World() {
   return (
 
     <Physics allowSleep broadphase="SAP">
-      <Plane></Plane>
-      {/* <Box position={[-1.2, 1, 0]} />
+      {/* <Debug scale={1.1} color="black"> */}
+
+        <Plane rotation={[-Math.PI / 2, 0, 0]}></Plane>
+        {/* <Box position={[-1.2, 1, 0]} />
         <Box position={[1.2, 1, 0]} /> */}
 
-      {spheres.map((sphereId, i) => <Sphere key={sphereId}></Sphere>)}
-      {cubes.map((cubeId, i) => <Cube key={cubeId}></Cube>)}
-      {popcorns.map((popcornId, i) => <Popcorn key={popcornId}></Popcorn>)}
+        {spheres.map((sphereId, i) => <Sphere key={sphereId}></Sphere>)}
+        {cubes.map((cubeId, i) => <Cube key={cubeId}></Cube>)}
+        {popcorns.map((popcornId, i) => <PopcornModel key={popcornId} scale={0.4}></PopcornModel>)}
+      {/* </Debug> */}
 
     </Physics>
   )
