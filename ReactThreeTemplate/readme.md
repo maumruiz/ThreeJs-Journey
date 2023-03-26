@@ -1,10 +1,10 @@
 # Shader Basics
 
-![image](./shader-basics.jpg)
+<!-- ![image](./shader-basics.jpg) -->
 
 ## Preview Link:
 
-https://shader-basics.vercel.app/
+<!-- https://shader-basics.vercel.app/ -->
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
