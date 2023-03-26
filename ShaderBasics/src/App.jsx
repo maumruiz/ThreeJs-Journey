@@ -20,6 +20,9 @@ import pattern2Fragment from './shaders/pattern2/fragment.glsl'
 import pattern3Vertex from './shaders/patterm3/vertex.glsl'
 import pattern3Fragment from './shaders/patterm3/fragment.glsl'
 
+import pattern4Vertex from './shaders/pattern4/vertex.glsl'
+import pattern4Fragment from './shaders/pattern4/fragment.glsl'
+
 import './App.css'
 
 const SpikesMaterial = shaderMaterial(
@@ -51,6 +54,12 @@ const Pattern3Material = shaderMaterial(
     pattern3Vertex, pattern3Fragment
 )
 extend({ Pattern3Material })
+
+const Pattern4Material = shaderMaterial(
+    {  },
+    pattern4Vertex, pattern4Fragment
+)
+extend({ Pattern4Material })
 
 function Spikes(props) {
     const geometryRef = useRef(null)
@@ -134,6 +143,19 @@ function Pattern3(props) {
     )
 }
 
+function Pattern4(props) {
+    const material = useRef()
+
+    return (
+        <mesh
+            {...props}
+        >
+            <planeGeometry args={[1, 1, 32, 32]} />
+            <pattern4Material ref={material} side={THREE.DoubleSide}/>
+        </mesh>
+    )
+}
+
 function App() {
 
     return (
@@ -145,6 +167,7 @@ function App() {
             <Patterns position={[4, 2, 0]} scale={2} />
             <Pattern2 position={[-4, -1.5, 0]} scale={2} />
             <Pattern3 position={[0, -1.5, 0]} scale={2} />
+            <Pattern4 position={[4, -1.5, 0]} scale={2} />
             <OrbitControls />
         </Canvas>
     )
