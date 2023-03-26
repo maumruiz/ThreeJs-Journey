@@ -143,7 +143,7 @@ void main() {
 
     // gl_FragColor = vec4(strength, strength, strength, 1.0);
 
-    strength = step(0.9, sin(cnoise(vUv * 10.0) * 15.0));
+    strength = step(0.7, sin(cnoise(vUv * 10.0) * 15.0));
     vec3 blackColor = vec3(0.0);
     vec3 uvColor = vec3(vUv, 0.5);
     vec3 mixedColor = mix(blackColor, uvColor, strength);
