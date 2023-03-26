@@ -11,6 +11,9 @@ import testFragmentShader from './shaders/test/fragment.glsl'
 import flagVertex from './shaders/flag/vertex.glsl'
 import flagFragment from './shaders/flag/fragment.glsl'
 
+import patternVertex from './shaders/pattern/vertex.glsl'
+import patternFragment from './shaders/pattern/fragment.glsl'
+
 import './App.css'
 
 const SpikesMaterial = shaderMaterial(
@@ -24,6 +27,12 @@ const FlagMaterial = shaderMaterial(
     flagVertex, flagFragment
 )
 extend({ FlagMaterial })
+
+const PatternMaterial = shaderMaterial(
+    {  },
+    patternVertex, patternFragment
+)
+extend({ PatternMaterial })
 
 function Spikes(props) {
     const geometryRef = useRef(null)
@@ -43,7 +52,7 @@ function Spikes(props) {
             {...props}
         >
             <planeGeometry ref={geometryRef} args={[1, 1, 32, 32]} />
-            <spikesMaterial />
+            <spikesMaterial side={THREE.DoubleSide}/>
         </mesh>
     )
 }
@@ -63,7 +72,20 @@ function Flag(props) {
             {...props}
         >
             <planeGeometry args={[1, 1, 32, 32]} />
-            <flagMaterial ref={material} uFrequency={options.frequency} uTexture={flag}/>
+            <flagMaterial ref={material} uFrequency={options.frequency} uTexture={flag} side={THREE.DoubleSide}/>
+        </mesh>
+    )
+}
+
+function Patterns(props) {
+    const material = useRef()
+
+    return (
+        <mesh
+            {...props}
+        >
+            <planeGeometry args={[1, 1, 32, 32]} />
+            <patternMaterial ref={material} side={THREE.DoubleSide}/>
         </mesh>
     )
 }
@@ -76,6 +98,7 @@ function App() {
             <pointLight position={[10, 10, 10]} />
             <Spikes position={[-4, 2, 0]} scale={2} />
             <Flag position={[0, 2, 0]} scale={[3,2/3*3,3]} />
+            <Patterns position={[4, 2, 0]} scale={2} />
             <OrbitControls />
         </Canvas>
     )
