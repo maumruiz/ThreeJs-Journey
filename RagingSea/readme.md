@@ -1,10 +1,10 @@
-# Shader Basics
+# Raging Sea
 
-<!-- ![image](./shader-basics.jpg) -->
+![image](./raging-sea.jpg)
 
 ## Preview Link:
 
-<!-- https://shader-basics.vercel.app/ -->
+https://raging-sea-murex.vercel.app/
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
