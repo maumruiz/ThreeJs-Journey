@@ -1,10 +1,10 @@
 # Galaxy Shader
 
-<!-- ![image](./galaxy_shader.jpg) -->
+![image](./galaxy_shader.jpg)
 
 ## Preview Link:
 
-<!-- https://galaxy-shaders.vercel.app/ -->
+https://galaxy-shaders.vercel.app/
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
