@@ -1,10 +1,10 @@
-# Shader Basics
+# Galaxy Shader
 
-<!-- ![image](./shader-basics.jpg) -->
+<!-- ![image](./galaxy_shader.jpg) -->
 
 ## Preview Link:
 
-<!-- https://shader-basics.vercel.app/ -->
+<!-- https://galaxy-shaders.vercel.app/ -->
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
