@@ -11,7 +11,7 @@ export default function App() {
                     <Model />
                 </Stage>
             </Suspense>
-            <OrbitControls  makeDefault />
+            <OrbitControls autoRotate makeDefault />
         </Canvas>
     )
 }
