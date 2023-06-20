@@ -13,9 +13,19 @@ extend({ PortalMaterial })
 export default function Portal(props) {
   const { nodes, materials } = useGLTF('/portal-transformed.glb')
   const portalMaterialRef = useRef()
+  const ring1 = useRef()
+  const ring2 = useRef()
+  const ring3 = useRef()
+  const ring4 = useRef()
   const bakedTexture = useTexture('/bakedFinal.jpg')
 
-  useFrame((state, delta) => (portalMaterialRef.current.uTime += delta))
+  useFrame((state, delta) => {
+    portalMaterialRef.current.uTime += delta
+    ring1.current.rotation.z += delta * 0.5
+    ring2.current.rotation.z -= delta * 0.7
+    ring3.current.rotation.z += delta * 0.5
+    ring4.current.rotation.z -= delta * 0.3
+  })
 
   return (
     <group {...props} dispose={null} rotation={[0, Math.PI, 0]}>
@@ -25,22 +35,22 @@ export default function Portal(props) {
         <MeshPortalMaterial transparent blend={0.0}>
           <ambientLight intensity={0.5} />
           <spotLight castShadow color={'orange'} intensity={2} position={[10, 10, 10]} angle={0.15} penumbra={1} shadow-normalBias={0.05} shadow-bias={0.0001} />
-          <Sphere rotation={[-Math.PI/2, 0, 0]} position={[0,0,0]} scale={0.7}>
+          <Sphere scale={0.7}>
             <portalMaterial ref={portalMaterialRef} side={THREE.BackSide}/>
           </Sphere>
-          <mesh scale={[0.2,0.2,0.2]} rotation={[Math.PI/2, 0, 0]} position={[0,-0.7,0]}>
+          <mesh ref={ring1} scale={[0.2,0.2,0.2]} rotation={[Math.PI/2, 0, 0]} position={[0,-0.7,0]}>
             <torusGeometry args={[0.40, 0.09, 7, 6]}/>
             <meshToonMaterial color={'orange'} />
           </mesh>
-          <mesh scale={[0.5,0.5,0.5]} rotation={[Math.PI/2, 0, 0]} position={[0,-0.5,0]}>
+          <mesh ref={ring2} scale={[0.5,0.5,0.5]} rotation={[Math.PI/2, 0, 0.8]} position={[0,-0.5,0]}>
             <torusGeometry args={[0.40, 0.05, 7, 6]}/>
             <meshToonMaterial color={'orange'} />
           </mesh>
-          <mesh scale={[1,1,1]} rotation={[Math.PI/2, 0, 1.7]} position={[0,-0.2,0]}>
+          <mesh ref={ring3} scale={[1,1,1]} rotation={[Math.PI/2, 0, 1.7]} position={[0,-0.2,0]}>
             <torusGeometry args={[0.40, 0.04, 7, 6]}/>
             <meshToonMaterial color={'orange'} />
           </mesh>
-          <mesh scale={[1.5,1.5,1.5]} rotation={[Math.PI/2, 0, 2.4]}>
+          <mesh ref={ring4} scale={[1.5,1.5,1.5]} rotation={[Math.PI/2, 0, 2.4]}>
             <torusGeometry args={[0.40, 0.04, 7, 6]}/>
             <meshToonMaterial color={'orange'} />
           </mesh>
