@@ -23,9 +23,7 @@ export default function Fireflies({ count = 40 }) {
             )
             scaleArray[i] = Math.random()
         }
-
-        console.log(positionArray)
-        console.log(scaleArray)
+        
         return [positionArray, scaleArray]
     }, [count])
 
