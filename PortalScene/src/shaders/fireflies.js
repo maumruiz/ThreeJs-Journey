@@ -7,7 +7,7 @@ export const FirefliesMaterial = shaderMaterial(
     {
         uTime: 0,
         uPixelRatio: Math.min(window.devicePixelRatio, 2),
-        uSize: 150,
+        uSize: 100,
     },
     vertex, fragment
 )

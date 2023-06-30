@@ -1,21 +1,31 @@
-import { useRef, useState, Suspense } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Stage } from '@react-three/drei'
+import { Suspense } from 'react'
+import { Perf } from 'r3f-perf'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import { Bloom, EffectComposer, Vignette, ChromaticAberration } from '@react-three/postprocessing'
+
 import Portal from './Portal'
 import Fireflies from './Fireflies'
+import LoadbarSound from './Audio'
 
 export default function App() {
     return (
-        <Canvas camera={{position: [2.5, 2, 3]}}>
-            <color attach={'background'} args={['#201919']}/>
-            <Suspense fallback={null}>
-                {/* <Environment preset="night" background /> */}
-                {/* <Stage adjustCamera={1.5}> */}
-                <Fireflies count={50}/>
-                <Portal />
-                {/* </Stage> */}
-            </Suspense>
-            <OrbitControls />
-        </Canvas>
+        <>
+            <Canvas flat camera={{ position: [2.5, 1.5, 3] }}>
+                <Perf position='top-left' />
+                <color attach={'background'} args={['#1e2243']} />
+                <Suspense fallback={null}>
+                    <Fireflies count={30} />
+                    <Portal />
+                </Suspense>
+                <OrbitControls enablePan={false} autoRotate autoRotateSpeed={0.2} minPolarAngle={0} maxPolarAngle={Math.PI / 2}/>
+                <EffectComposer enabled={true} multisampling={0}>
+                    <Bloom mipmapBlur luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+                    <Vignette offset={0.3} darkness={0.5} />
+                    <ChromaticAberration offset={[0.002, 0.002]} />
+                </EffectComposer>
+            </Canvas>
+            <LoadbarSound />
+        </>
     )
 }

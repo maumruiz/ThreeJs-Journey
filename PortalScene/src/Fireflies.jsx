@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import { Vector3 } from 'three'
 import { useRef, useMemo } from 'react'
 import { useFrame, extend } from '@react-three/fiber'
 
@@ -13,7 +13,7 @@ export default function Fireflies({ count = 40 }) {
         const positionArray = new Float32Array(count * 3)
         const scaleArray = new Float32Array(count)
         for (let i = 0; i < count; i++) {
-            new THREE.Vector3(
+            new Vector3(
                 (Math.random() - 0.5) * 4,
                 Math.random() * 1.5,
                 (Math.random() - 0.5) * 4
@@ -37,7 +37,7 @@ export default function Fireflies({ count = 40 }) {
                 <bufferAttribute attach={'attributes-position'} count={count} array={positionArray} itemSize={3} />
                 <bufferAttribute attach={'attributes-aScale'} count={count} array={scaleArray} itemSize={1} />
             </bufferGeometry>
-            <firefliesMaterial ref={shader} transparent depthWrite={false} />
+            <firefliesMaterial ref={shader} transparent depthWrite={true} />
         </points>
     )
 }
