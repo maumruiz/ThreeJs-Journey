@@ -14,10 +14,10 @@ export default function App() {
                 position={[2, 10, 5]}
             />
             <Suspense fallback={null}>
-                <Stage preset="rembrandt">
+                {/* <Stage preset="rembrandt"> */}
                     <Model />
                     {/* <Plane args={[15, 15, 15]} position={[0, 0, -5]}/> */}
-                </Stage>
+                {/* </Stage> */}
             </Suspense>
             <OrbitControls makeDefault />
         </Canvas>

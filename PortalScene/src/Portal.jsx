@@ -11,13 +11,16 @@ import { PortalMaterial } from './shaders/portal'
 extend({ PortalMaterial })
 
 export default function Portal(props) {
-  const { nodes, materials } = useGLTF('/SmartUVPortal.glb')
+  const { nodes, materials } = useGLTF('/PortalSpider.glb')
   const portalMaterialRef = useRef()
   const ring1 = useRef()
   const ring2 = useRef()
   const ring3 = useRef()
   const ring4 = useRef()
-  const bakedTexture = useTexture('/SmartUVBaked.jpg')
+  const bakedTexture1 = useTexture('/BakedTrees.jpg')
+  const bakedTexture2 = useTexture('/BakedRocks.jpg')
+  const bakedTexture3 = useTexture('/BakedScene.jpg')
+  const bakedTexture4 = useTexture('/BakedSpider.jpg')
 
   useFrame((state, delta) => {
     portalMaterialRef.current.uTime += delta
@@ -29,8 +32,8 @@ export default function Portal(props) {
 
   return (
     <group {...props} dispose={null} rotation={[0, Math.PI, 0]} position={[0,-0.1,0]}>
-      <mesh geometry={nodes.poleLightB.geometry} material-color={[3,0.5,0.38]} position={[-1.013, 0.762, -0.088]} rotation={[0, -1.538, 0]} />
-      <mesh geometry={nodes.poleLightA.geometry} material-color={[3,0.5,0.38]} position={[1.052, 0.762, -0.8]} rotation={[-Math.PI, 1.556, -Math.PI]} />
+      <mesh geometry={nodes.poleLightB.geometry} material-color={[3,0.5,0.38]} position={[-0.688, 0.762, 0.001]} rotation={[0, -1.538, 0]} />
+      <mesh geometry={nodes.poleLightA.geometry} material-color={[3,0.5,0.38]} position={[0.734, 0.762, -0.813]} rotation={[-Math.PI, 1.556, -Math.PI]} />
       <mesh geometry={nodes.portalLight.geometry} position={[0, 0.948, 1.783]} rotation={[-Math.PI / 2, 0, 0]}>
         <MeshPortalMaterial transparent blend={0.0}>
           <ambientLight intensity={0.9} />
@@ -56,11 +59,20 @@ export default function Portal(props) {
           </mesh>
         </MeshPortalMaterial>
       </mesh>
-      <mesh geometry={nodes.baked2.geometry} position={[0, 0.942, 1.82]} rotation={[0, 0, 0.81]}>
-        <meshBasicMaterial map={bakedTexture} map-flipY={false} />
+      <mesh geometry={nodes.bakedTrees.geometry} position={[-1.424, 0.045, -0.261]}>
+        <meshBasicMaterial map={bakedTexture1} map-flipY={false} />
+      </mesh>
+      <mesh geometry={nodes.bakedRocks.geometry} position={[-1.433, 0, 1.353]}>
+        <meshBasicMaterial map={bakedTexture2} map-flipY={false} />
+      </mesh>
+      <mesh geometry={nodes.bakedScene.geometry} position={[-0.764, 0, -1.32]}>
+        <meshBasicMaterial map={bakedTexture3} map-flipY={false} />
+      </mesh>
+      <mesh geometry={nodes.bakedSpider.geometry} position={[0.039, 0.007, -1.41]} rotation={[Math.PI / 2, 0, 1.595]}>
+        <meshBasicMaterial map={bakedTexture4} map-flipY={false} />
       </mesh>
     </group>
   )
 }
 
-useGLTF.preload('/SmartUVPortal.glb')
+useGLTF.preload('/PortalSpider.glb')
