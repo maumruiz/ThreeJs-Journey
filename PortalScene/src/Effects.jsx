@@ -48,9 +48,9 @@ export default function Effects() {
     })
 
     return (
-        <EffectComposer enabled={true} multisampling={0}>
+        <EffectComposer enabled={true}>
             <Bloom mipmapBlur luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-            <Vignette offset={0.3} darkness={0.5} />
+            <Vignette offset={0.3} darkness={0.6} />
             <ChromaticAberration ref={chromaticEffect} offset={[0.002, 0.002]} />
         </EffectComposer>
     )

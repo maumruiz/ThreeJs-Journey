@@ -2,7 +2,7 @@ import { Sphere, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
 
 function EnvMap() {
-    const envmapTexture = useTexture('/envmap.png')
+    const envmapTexture = useTexture('/envmap-min.png')
     envmapTexture.wrapS = THREE.RepeatWrapping
     envmapTexture.wrapT = THREE.RepeatWrapping
     envmapTexture.offset.x = 0.5
